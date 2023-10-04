@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuário</title>
+    <!-- Inclua os arquivos CSS e JavaScript do Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h3>Cadastro de Usuário</h3>
+        <form id="registro-form">
+            <div class="input-field">
+                <input type="text" id="login" name="login">
+                <label for="login">Login</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="senha" name="senha">
+                <label for="senha">Senha</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="nome" name="nome">
+                <label for="nome">Nome Completo</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="cep" name="cep">
+                <label for="cep">CEP</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="bairro" name="bairro">
+                <label for="bairro">Bairro</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="cidade" name="cidade">
+                <label for="cidade">Cidade</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="logradouro" name="logradouro">
+                <label for="logradouro">Logradouro</label>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">Registrar</button>
+        </form>
+    </div>
+    
+
+    <script type="text/Javascript" src="js/cep.js"></script>
+
+    </script>
+    <script>
+        // Armazene os dados no SessionStorage
+        sessionStorage.setItem('userData', JSON.stringify(formData));
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicialize os campos do formulário Materialize CSS
+            M.AutoInit();
+
+
+            // Adicione um ouvinte de evento para o envio do formulário
+            document.getElementById('registro-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Obtenha os dados do formulário
+                const formData = {
+                    login: document.getElementById('login').value,
+                    senha: document.getElementById('senha').value,
+                    nome: document.getElementById('nome').value,
+                    cep: document.getElementById('cep').value,
+                    bairro: document.getElementById('bairro').value,
+                    cidade: document.getElementById('cidade').value,
+                    logradouro: document.getElementById('logradouro').value
+                };
+
+                // Armazene os dados no SessionStorage
+                sessionStorage.setItem('userData', JSON.stringify(formData));
+
+                // Redirecione de volta para a tela de autenticação ou faça o que for necessário
+                window.location.href = 'tela_de_autenticacao.html';
+            });
+        });
+    </script>
+
+</body>
+</html>
